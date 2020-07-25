@@ -107,6 +107,21 @@ header{
     justify-content: space-between;
     padding-top: 30px;
 }
+.navbar-menu span{
+    position: absolute;
+    top:14px;
+    font-size: 20px;
+    line-height: 1px;
+}
+.navbar-menu li {
+    position: relative;
+}
+.active{
+    color:#fff;
+    background-color:#4d6a7c;
+    border-radius: 50%;
+    padding:6px;
+}
 .navbar-header{
     display: flex;
     align-items: center;
@@ -669,9 +684,6 @@ input[type="search"]::-moz-placeholder {
     }
     .instruments-text h1{
         font-size: 20px;
-    }
-    .instruments-text button{
-        
     }
 }
 
