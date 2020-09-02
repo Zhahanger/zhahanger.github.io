@@ -1,5 +1,5 @@
 # zhahanger.github.io
 ## Zhahanger Kydyraliyev
-[AngelsNiko](https://zhahanger.github.io/angelsNiko/)  
 [Bicycle](https://zhahanger.github.io/bicycle/)  
+[AngelsNiko](https://zhahanger.github.io/angelsNiko/)  
 [Другие проекты](https://jahanger.github.io/)  
