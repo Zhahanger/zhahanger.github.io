@@ -8,6 +8,7 @@ let activeArray = [],
 if (canvas.getContext) {
     var ctx = canvas.getContext('2d');
   }
+
 function createTable(inRow,inColumn){
     for (let i = 0; i < inRow; i++) {
         activeArray[i] = [];
@@ -17,6 +18,7 @@ function createTable(inRow,inColumn){
      }
      inActiveArray = activeArray;
 }
+
 createTable(cellsInRows,cellsInColumns);
 canvas.addEventListener('click',(event)=>{
     let x = event.offsetX;
@@ -34,9 +36,10 @@ canvas.addEventListener('click',(event)=>{
     colorArray();
 })
 console.log(activeArray);
+
 function colorArray() {
-    for (let i = 0; i < cellsInColumns; i++) {
-        for (let j = 0; j < cellsInRows; j++) {
+    for (let i = 0; i < cellsInRows; i++) {
+        for (let j = 0; j < cellsInColumns; j++) {
              let color;
              if (activeArray[i][j] == 1)
                  color = 'green';
@@ -47,65 +50,130 @@ function colorArray() {
         }
     }
 }
+let neighbor = 0;
 colorArray();
-button.addEventListener('click',checkBornAndLife)
-function checkBornAndLife (){
+button.addEventListener('click',start)
+function start() { 
+    const interval = setInterval(checkBornAndLife,100)
+ }
+let arrayBorn = [],
+    arrayDie = [],
+    arrayLife = [];
+const checkBornAndLife = () =>{
+    arrayBorn = [],
+    arrayDie = [],
+    arrayLife = [];
     for (let i = 0; i < cellsInRows; i++) {
         for (let j = 0; j < cellsInColumns; j++) {
-            let neighbor = countNeighbor(i,j);
-            console.log(i + " " + j);
-            console.log(neighbor);
-            if(neighbor === 3){
-                alert(i,j);
+            neighbor = 0;
+            neighbor = countNeighbor(i , j);
+            console.log(i + ' ' + j + ' :' + neighbor )
+            if(activeArray[i][j] === 1){
+                if(neighbor < 2 || neighbor > 3){
+                    arrayDie.push({"x" : i,"y" : j})
+                } else if(neighbor == 2 || neighbor == 3){
+                    arrayLife.push({"x" : i,"y" : j})
+                }
+            } else {
+                if(neighbor === 3){
+                    arrayBorn.push({"x" : i,"y" : j})
+                }
             }
-            
-            if((activeArray[i][j] === 1) && (neighbor < 2 || neighbor >= 4)){
-                inActiveArray[i][j] = 0;
-            }
-            
-            if((activeArray[i][j] === 1) && (neighbor === 3 || neighbor === 2)){
-                inActiveArray[i][j] = 1;
-            }
+            // if((neighbor === 3) && (activeArray[i][j] === 0)){
+            //     activeArray[i][j] = 1
+            // }
+            // if(neighbor > 0){
+            //     console.log(`${i}  ${j} : ${neighbor}`)
+            // }
         }
     }
-    activeArray = inActiveArray;    
+        
+     colorArray();
+     doBornAndLife();
+}
+const doBornAndLife =() =>{
+    arrayDie.forEach(item => {
+        inActiveArray[item["x"]][item["y"]] = 0;
+    })
+    arrayBorn.forEach(item => {
+        inActiveArray[item["x"]][item["y"]] = 1;
+    })
+    arrayLife.forEach(item =>{
+        inActiveArray[item["x"]][item["y"]] = 1;
+    })
+    activeArray = inActiveArray;
     colorArray();
 }
-
+// function checkBornAndLife (){
+//     for (let i = 0; i < cellsInRows; i++) {
+//         for (let j = 0; j < cellsInColumns; j++) {
+//             neighbor = 0;
+//             neighbor = countNeighbor(i , j);
+            
+//             console.log(i + " " + j);
+//             console.log(neighbor);
+//             // if(neighbor == 3){
+//             //     alert("yes" + i + " " + j)
+//             // }
+//             if(activeArray[i][j] === 0 && neighbor === 3){
+//                 inActiveArray[i][j] = 1;
+//                 console.log(inActiveArray)
+//             }
+//             else if(activeArray[i][j] === 1 && neighbor < 2 || neighbor >= 4){
+//                 inActiveArray[i][j] = 0;
+//             }
+//             else if(activeArray[i][j] === 1 && neighbor === 3 || neighbor === 2){
+//                 inActiveArray[i][j] = 1;
+//             }
+//         }
+//     }
+//     activeArray = inActiveArray;    
+//     colorArray();
+//     console.log("Result: " + countNeighbor(26,23));
+// }
+// function checkBornAndLife(){
+//     activeArray.forEach((item)=>{
+//         item.forEach((inItem)=>{
+//             if(inItem =)
+//         })
+//     })
+// }
 function countNeighbor (y,x) {
     let counter = 0;
-    if(activeArray[fix(y)][fix(x + 1)] === 1){
+    if(activeArray[fix(y)][fix(x + 1)] == 1){
         counter++;
     }
-    if(activeArray[fix(y)][fix(x - 1)] === 1){
+    if(activeArray[fix(y)][fix(x - 1)] == 1){
         counter++;
     }
-    if(activeArray[fix(y + 1)][fix(x)] === 1){
+    if(activeArray[fix(y + 1)][fix(x)] == 1){
         counter++;
     }
-    if(activeArray[fix(y - 1)][fix(x)] === 1){
+    if(activeArray[fix(y - 1)][fix(x)] == 1){
         counter++;
     }
-    if(activeArray[fix(y - 1)][fix(x + 1)]){
+    if(activeArray[fix(y - 1)][fix(x + 1)] == 1){
         counter++;
     }
-    if(activeArray[fix(y - 1)][fix(x - 1)]){
+    if(activeArray[fix(y - 1)][fix(x - 1)] == 1){
         counter++;
     }
-    if(activeArray[fix(y + 1)][fix(x + 1)]){
+    if(activeArray[fix(y + 1)][fix(x + 1)] == 1){
         counter++;
     }
-    if(activeArray[fix(y + 1)][fix(x - 1)]){
+    if(activeArray[fix(y + 1)][fix(x - 1)] == 1){
         counter++;
     }
+
     return counter;
+
 }
 function fix (a){
-    if(a <= -1){
+    if(a < 0){
         a = a + 60;
     }
     if(a > 59){
-        a = a - 59;
+        a = a - 60;
     }
     return a;
 }
