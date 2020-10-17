@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+body {
+  background: #2D3142;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+a{
+    border:2px solid #fff;
+    padding:10px;
+    color:#fff;
+    transition: all .3s;
+}
+a:hover{
+    cursor: pointer;
+    background-color: rgb(255, 255, 255,.3);
+}
+button:hover{
+    background-color:blue;
+}
+#canvas{
+    width:600px;
+    height:600px;
+    border:2px solid #fff;
+    margin-bottom: 10px;
+}
