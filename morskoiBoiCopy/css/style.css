@@ -1,0 +1,37 @@
+#gameZone{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.table{
+    width:400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr);
+}
+.tableUser{
+    width:400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr);
+}
+.excel{
+    display: inline-block;
+    text-align: center;
+    width:40px;
+    height: 40px;
+    /* background-color: red; */
+    margin:0.5px;
+}
+.excelUser{
+    text-align: center;
+    width:40px;
+    height: 40x;
+    background-color: red;
+    margin:0.5px;
+}
+.excel> img{
+    
+}
