@@ -5,4 +5,4 @@
 [Морской бой на JavaScript](https://zhahanger.github.io/morskoiBoi/)  
 [to-do list on React](https://zhahanger.github.io/experiment/)  
 [Другие проекты](https://jahanger.github.io/)  
-[Новый проект](https://zhahanger.github.io/morskoiBoi2/)  
+[Новый проект](https://zhahanger.github.io/morskoiBoiCopy/)  
